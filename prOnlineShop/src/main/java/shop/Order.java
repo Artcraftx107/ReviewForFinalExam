@@ -1,10 +1,9 @@
 package shop;
 
-import java.time.Instant;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Order {
 
@@ -14,17 +13,15 @@ public class Order {
     private int totalAmount;
     private Date orderDate;
 
-    public Order(int orderId, Customer customer, int totalAmount){
+    public Order(int orderId, Customer customer){
         if(orderId<0){
             throw new IllegalArgumentException("The id of the order cannot be lower than 0"); 
-        } else if (totalAmount<0) {
-            throw new IllegalArgumentException("The total amount cannot be negative");
         }else{
-            this.orderDate=Date.from(Instant.from(LocalDate.now()));
+            this.orderDate=new Date();
             this.orderId=orderId;
             this.customer=customer;
             this.productList=new ArrayList<>();
-            this.totalAmount=totalAmount;
+            this.totalAmount=0;
         }
     }
 
@@ -48,5 +45,51 @@ public class Order {
         return productList;
     }
 
+    public void addProduct(Product product, int quantity) {
+        if (product == null || quantity <= 0) {
+            throw new IllegalArgumentException("Product cannot be null and quantity must be greater than 0");
+        }
+        int pos = searchProductInList(product);
+        if (pos != -1) {
+            Product existingProduct = productList.get(pos);
+            existingProduct.addStock(quantity);
+        } else {
+            productList.add(product);
+        }
+        product.removeStock(quantity);
+        this.totalAmount += product.getPrice() * quantity;
+    }
 
+    public void removeProduct(Product product) {
+        int pos = searchProductInList(product);
+        if (pos != -1) {
+            Product existingProduct = productList.get(pos);
+            int quantity = existingProduct.getStockQuantity();
+            existingProduct.addStock(quantity);
+            productList.remove(pos);
+            this.totalAmount -= existingProduct.getPrice() * quantity;
+        } else {
+            throw new NoSuchElementException("The product asked to remove hasn't been added to the order in the first place");
+        }
+    }
+
+    private int searchProductInList(Product product) {
+        for (int i = 0; i < productList.size(); i++) {
+            if (product.getName().equalsIgnoreCase(productList.get(i).getName())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder shiftyString = new StringBuilder();
+        shiftyString.append("Order ID: ").append(orderId)
+                .append(", Customer: ").append(customer.getName())
+                .append(", Order Date: ").append(orderDate)
+                .append(", Products: ").append(productList)
+                .append(", Total Amount: ").append(totalAmount);
+        return shiftyString.toString();
+    }
 }
