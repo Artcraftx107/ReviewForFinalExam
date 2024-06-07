@@ -10,17 +10,19 @@ public class Product {
     private double price;
     private int stockQuantity;
 
-    public Product(int id, String n, String d, double p, int numOfProductsAdded){
+    public Product(int id, String n, String d, double p, int initStock){
         if(id<0||p<0){
             throw new IllegalArgumentException("Neither the id or the price can be negative");
         } else if (n.isBlank()) {
             throw new IllegalArgumentException("Name of the product cannot be empty");
-        }else{
+        } else if (initStock<0) {
+            throw new IllegalArgumentException("The number of initial stock cannot be lower than 0");
+        } else{
             this.productId=id;
             this.description=d;
             this.name=n;
             this.price=p;
-            this.stockQuantity+=numOfProductsAdded;
+            this.stockQuantity=initStock;
         }
     }
 
@@ -49,7 +51,11 @@ public class Product {
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        if(price<0){
+            throw new IllegalArgumentException("New price cannot be negative");
+        }else{
+            this.price = price;
+        }
     }
 
     public void addStock(int numOfProductsAdded){
@@ -57,6 +63,16 @@ public class Product {
             throw new IllegalArgumentException("The number of added stock cannot be less than 0");
         }else{
             this.stockQuantity+=numOfProductsAdded;
+        }
+    }
+
+    public void removeStock(int numOfProductsRemoved){
+        if(numOfProductsRemoved<0){
+            throw new IllegalArgumentException("You cannot remove less than 0, use addStock to add more stock");
+        } else if (numOfProductsRemoved>stockQuantity) {
+            System.err.println("There is not enough stock, the current stock is: "+stockQuantity);
+        } else{
+            this.stockQuantity-=numOfProductsRemoved;
         }
     }
 
@@ -76,7 +92,11 @@ public class Product {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("ID:").append(productId).append(", Name:").append(name).append(", Description: \n").append(description+"\n").append("Price:").append(price).append(", Current Stock:").append(stockQuantity);
+        sb.append("ID:").append(productId)
+                .append(", Name:").append(name)
+                .append(", Description: \n").append(description+"\n")
+                .append("Price:").append(price)
+                .append(", Current Stock:").append(stockQuantity);
         return ("("+sb+")");
     }
 }
