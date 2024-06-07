@@ -25,5 +25,19 @@ public class Customer {
         }
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public List<Order> getOrderHistory() {
+        return orderHistory;
+    }
 }
