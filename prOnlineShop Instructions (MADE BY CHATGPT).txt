@@ -1,0 +1,29 @@
+Project Instructions:
+
+1. Store Class:
+    - Create a class named `Store`.
+    - Include three `ArrayList` fields for storing products, customers, and orders.
+    - Implement a constructor to initialize these lists.
+    - Provide methods to add, remove, and update products and customers.
+    - Implement methods for placing orders, viewing order history, and applying discounts to products.
+    - Include methods to view all products, customers, and orders.
+
+2. Product Class:
+    - Create a class named `Product`.
+    - Include fields such as product ID, name, description, price, and stock quantity.
+    - Implement a constructor to initialize these fields.
+    - Provide methods to get and set these fields.
+    - Implement methods to add and remove stock.
+
+3. Customer Class:
+    - Create a class named `Customer`.
+    - Include fields such as customer ID, name, email, and address.
+    - Implement a constructor to initialize these fields.
+    - Provide methods to get and set these fields.
+    - Include a method to add orders to the customer's order history.
+
+4. Order Class:
+    - Create a class named `Order`.
+    - Include fields such as order ID, customer, list of products, total amount, and order date.
+    - Implement a constructor to initialize these fields.
+    - Provide methods to add and remove products from the order, calculate the total amount, and get order details.
