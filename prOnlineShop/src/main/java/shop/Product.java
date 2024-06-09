@@ -94,7 +94,7 @@ public class Product {
         StringBuilder sb = new StringBuilder();
         sb.append("ID:").append(productId)
                 .append(", Name:").append(name)
-                .append(", Description: \n").append(description+"\n")
+                .append(", Description: ").append(description+", ")
                 .append("Price:").append(price)
                 .append(", Current Stock:").append(stockQuantity);
         return ("("+sb+")");
