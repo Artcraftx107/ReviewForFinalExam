@@ -43,6 +43,10 @@ public class Customer {
         return orderHistory;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }

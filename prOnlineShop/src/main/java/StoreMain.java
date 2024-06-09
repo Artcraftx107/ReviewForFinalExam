@@ -3,7 +3,7 @@ import shop.*;
 import java.util.Arrays;
 import java.util.List;
 
-public class StoreTest {
+public class StoreMain {
 
     public static void main(String[] args) {
         Store store = new Store();

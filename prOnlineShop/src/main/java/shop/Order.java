@@ -10,7 +10,7 @@ public class Order {
     private int orderId;
     private Customer customer;
     private List<Product> productList;
-    private int totalAmount;
+    private double totalAmount;
     private Date orderDate;
 
     public Order(int orderId, Customer customer){
@@ -37,7 +37,7 @@ public class Order {
         return orderId;
     }
 
-    public int getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
