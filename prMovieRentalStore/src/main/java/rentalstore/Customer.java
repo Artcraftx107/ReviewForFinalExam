@@ -8,7 +8,7 @@ public class Customer {
     private int membershipId;
     private List<Movie> rentedMovies;
 
-    public Customer(String name, int membershipId, List<Movie> rentedMovies){
+    public Customer(String name, int membershipId){
         if(name.isBlank()){
             throw new IllegalArgumentException("The name of the customer cannot be blank");
         }else if (membershipId<0){
@@ -16,7 +16,7 @@ public class Customer {
         }else{
             this.name=name;
             this.membershipId=membershipId;
-            this.rentedMovies=new ArrayList<>(rentedMovies);
+            this.rentedMovies=new ArrayList<>();
         }
     }
 
@@ -42,5 +42,13 @@ public class Customer {
 
     public void setRentedMovies(List<Movie> rentedMovies) {
         this.rentedMovies = rentedMovies;
+    }
+
+    public void rentMovie(Movie movie) {
+        rentedMovies.add(movie);
+    }
+
+    public void returnMovie(Movie movie) {
+        rentedMovies.remove(movie);
     }
 }
