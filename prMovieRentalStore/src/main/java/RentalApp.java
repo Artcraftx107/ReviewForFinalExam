@@ -42,19 +42,15 @@ public class RentalApp {
                     viewRentedMovies(scanner);
                     break;
                 case 5:
-                    //Unfinished method, will be finished later.
                     addMovie(scanner);
                     break;
                 case 6:
-                    //Unadded method, will be added later.
                     removeMovie(scanner);
                     break;
                 case 7:
-                    //Unadded method, will be added later.
-                    viewAllMovies(scanner);
+                    rentalStore.displayAllMovies();
                     break;
                 case 8:
-                    //Unadded method, will be added later.
                     generateGenreStatistics();
                     break;
                 case 9:
@@ -67,6 +63,26 @@ public class RentalApp {
         scanner.close();
     }
 
+    private static void generateGenreStatistics() {
+        Map<String, Integer> stats = rentalStore.generateGenreStatistics();
+        System.out.println("Genre statistics: ");
+        for(Map.Entry<String, Integer> entry : stats.entrySet()){
+            System.out.println(entry.getKey()+": "+entry.getValue());
+        }
+    }
+
+    private static void removeMovie(Scanner scanner) {
+        System.out.println("Enter the title of the movie to remove: ");
+        String title = scanner.nextLine();
+
+        try {
+            rentalStore.removeMovie(title);
+            System.out.println("Movie removed sucessfully");
+        }catch (NoSuchElementException e){
+            System.err.println(e.getMessage());
+        }
+    }
+
     private static void addMovie(Scanner scanner) {
         System.out.println("Enter the title: ");
         String title = scanner.nextLine();
@@ -74,7 +90,22 @@ public class RentalApp {
         String director = scanner.nextLine();
         System.out.println("Enter the release date in the following format " +
                 "(day/month/year) without the brackets: ");
-        LocalDate releaseDate = Lo
+        String[] aux = scanner.nextLine().split("/");
+        if(aux.length<3){
+            throw new IllegalArgumentException("There was an error with the entered date");
+        }
+        int day = Integer.parseInt(aux[0]);
+        int month = Integer.parseInt(aux[1]);
+        int year = Integer.parseInt(aux[2]);
+        LocalDate releaseDate = LocalDate.of(year, month, day);
+        System.out.println("Enter the genre: ");
+        String genre = scanner.nextLine();
+        System.out.println("Enter the rating (ALLOWED PEGIS; 3, 7, 12, 16, 18): ");
+        String rating = scanner.nextLine();
+
+        Movie movie = new Movie(title, director, releaseDate, rating, genre);
+        rentalStore.addMovie(movie);
+        System.out.println("Movie added successfully");
     }
 
     private static void viewRentedMovies(Scanner scanner) {
@@ -95,7 +126,7 @@ public class RentalApp {
 
     private static void returnMovie(Scanner scanner) {
         System.out.println(ASK_FOR_ID);
-        int id = scanner.nextInt();
+        int id = Integer.parseInt(scanner.nextLine());
         Customer customer = customers.get(id);
         if(customer==null){
             System.err.println(ID_NOT_FOUND);
@@ -106,7 +137,7 @@ public class RentalApp {
         String title = scanner.nextLine();
 
         try{
-            if(rentalStore.checkAvailability(title)){
+            if(!rentalStore.checkAvailability(title)){
                 customer.returnMovie(rentalStore.searchMovieByTitle(title));
                 rentalStore.updateAvailability(title, true);
                 System.out.println("Movie returned successfully");
@@ -118,7 +149,7 @@ public class RentalApp {
 
     private static void rentMovie(Scanner scanner) {
         System.out.println(ASK_FOR_ID);
-        int id = scanner.nextInt();
+        int id = Integer.parseInt(scanner.nextLine());
 
         Customer customer = customers.get(id);
         if(customer==null){

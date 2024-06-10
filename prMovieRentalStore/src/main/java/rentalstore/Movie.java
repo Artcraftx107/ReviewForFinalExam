@@ -13,7 +13,7 @@ public class Movie {
     private PEGIRating rating;
     private boolean availability;
 
-    public Movie(String t, String d, LocalDate rd, PEGIRating r, String g){
+    public Movie(String t, String d, LocalDate rd, String r, String g){
         if(t.isBlank()||d.isBlank()||g.isBlank()){
             throw new IllegalArgumentException("Neither the title, the director's name or the genre can be null or blank");
         }else{
@@ -25,8 +25,26 @@ public class Movie {
             this.title=t;
             this.director=d;
             this.releaseDate=rd;
-
             this.genre=g;
+            switch (r){
+                case "3":
+                    this.rating=PEGIRating.PEGI_3;
+                    break;
+                case "7":
+                    this.rating=PEGIRating.PEGI_7;
+                    break;
+                case "12":
+                    this.rating=PEGIRating.PEGI_12;
+                    break;
+                case "16":
+                    this.rating=PEGIRating.PEGI_16;
+                    break;
+                case "18":
+                    this.rating=PEGIRating.PEGI_18;
+                    break;
+                default:
+                    throw new IllegalArgumentException("The rating introduced is not a valid PEGI rating");
+            }
         }
     }
 
