@@ -1,0 +1,69 @@
+
+# Java Project Instructions
+
+## Setting Up Dependencies
+
+Ensure you have the following dependencies in your `pom.xml` file if you are using Maven:
+
+```xml
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-engine</artifactId>
+    <version>5.8.1</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>4.0.0</version>
+    <scope>test</scope>
+</dependency>
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-junit-jupiter</artifactId>
+    <version>4.0.0</version>
+    <scope>test</scope>
+</dependency>
+```
+
+## Writing Basic Tests for UserService
+
+1. **Create a Test Class:**
+   - In your `src/test/java` directory, create a new class named `UserTest`.
+
+2. **Annotate the Class with @ExtendWith:**
+   - Use `@ExtendWith(MockitoExtension.class)` to enable Mockito in your test class.
+
+3. **Write Test Methods:**
+   - Create test methods for each method in the `UserService` class using the `@Test` annotation.
+   - Use `assertEquals`, `assertNotNull`, and `assertThrows` to check if the results match the expected values.
+   - Handle exceptions where necessary.
+
+## Additional Tests
+
+### 1. Test for Updating User Information
+
+Add an update method to `UserService`:
+
+public void updateUser(User user) 
+
+Write the test:
+@Test
+void testUpdateUser()
+
+
+### 2. Test for Finding a User that Doesn't Exist
+@Test
+void testGetNonExistingUserById()
+
+### 3. Test for Deleting a User that Doesn't Exist
+
+### 4. Test for Handling Exceptions
+
+### 5. Test for Retrieving All Users (If Applicable)
+
+### 6. Add a method to `UserService`:
+
+	public List<User> getAllUsers() 
+
+	Write the test of this method
