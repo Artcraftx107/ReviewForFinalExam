@@ -5,8 +5,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class UserTest {
@@ -48,5 +51,44 @@ public class UserTest {
     void testDeleteUser(){
         userService.deleteUser(1);
         verify(userRepository, times(1)).delete(1);
+    }
+
+    @Test
+    void testUpdateUser(){
+        user.setName("John Doe");
+        user.setEmail("jayden@gmail.com");
+        userService.updateUser(user);
+        verify(userRepository, times(1)).save(user);
+    }
+
+    @Test
+    void testGetNonExistingUserById(){
+        when(userRepository.findById(2)).thenReturn(null);
+        User foundUser = userService.getUserById(2);
+        assertNull(foundUser);
+        verify(userRepository, times(1)).findById(2);
+    }
+
+    @Test
+    void testDeleteNonExistingUser(){
+        doNothing().when(userRepository).delete(2);
+        userService.deleteUser(2);
+        verify(userRepository, times(1)).delete(2);
+    }
+
+    @Test
+    void testSaveUserThrowsException(){
+        doThrow(new RuntimeException("Database error")).when(userRepository).save(user);
+        assertThrows(RuntimeException.class, ()-> userService.saveUser(user));
+        verify(userRepository, times(1)).save(user);
+    }
+
+    @Test
+    void testGetAllUsers(){
+        List<User> users = Arrays.asList(user);
+        when(userRepository.findAll()).thenReturn(users);
+        List<User> retrievedUsers = userService.getAllUsers();
+        assertEquals(users, retrievedUsers);
+        verify(userRepository, times(1)).findAll();
     }
 }

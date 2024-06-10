@@ -1,6 +1,7 @@
 package calculator;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserRepository {
@@ -16,6 +17,11 @@ public class UserRepository {
 
     public void delete(int id) {
         users.remove(id);
+    }
+
+    public List<User> findAll() {
+        List<User> users1 = (List<User>) users;
+        return users1;
     }
 }
 

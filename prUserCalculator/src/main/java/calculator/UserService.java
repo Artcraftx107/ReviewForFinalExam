@@ -1,5 +1,7 @@
 package calculator;
 
+import java.util.List;
+
 public class UserService {
     private UserRepository userRepository;
 
@@ -17,5 +19,13 @@ public class UserService {
 
     public void deleteUser(int id) {
         userRepository.delete(id);
+    }
+
+    public void updateUser(User user) {
+        userRepository.save(user);
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }
