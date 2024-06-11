@@ -1,0 +1,2 @@
+History 101,HIST101,Introduction to History
+Math 101,MATH101,Introduction to Mathematics

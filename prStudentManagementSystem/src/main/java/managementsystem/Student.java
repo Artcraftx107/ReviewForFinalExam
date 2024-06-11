@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Student {
     private String name;
-    private int studentId;
-    List<Integer> enrolledCourses;
+    private String studentId;
+    List<String> enrolledCourses;
 
-    public Student(String name, int studentId) {
-        if (name.isBlank() || studentId < 0) {
-            throw new IllegalArgumentException("Neither the name can be blank or the student ID can be negative");
+    public Student(String name, String studentId) {
+        if (name.isBlank() || studentId.isBlank()) {
+            throw new IllegalArgumentException("Neither the name can be blank or the student ID can be incorrect");
         }
         this.name = name;
         this.studentId = studentId;
@@ -23,11 +23,11 @@ public class Student {
         return name;
     }
 
-    public int getStudentId() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public List<Integer> getEnrolledCourses() {
+    public List<String> getEnrolledCourses() {
         return enrolledCourses;
     }
 
@@ -35,32 +35,15 @@ public class Student {
         this.name = name;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
 
     public void enrollCourse(String code){
-        try {
-            int courseCode = Integer.parseInt(code);
-            enrolledCourses.add(courseCode);
-        }catch (NumberFormatException e){
-            throw new NumberFormatException("Course code "+code+" is not valid");
-        }
+        enrolledCourses.add(code);
     }
 
     public void withdrawCourse(String code){
-        try{
-            int courseCode = Integer.parseInt(code);
-            enrolledCourses.remove(courseCode);
-        }catch (NumberFormatException e){
-            throw new NumberFormatException("Course code "+code+" is not valid");
-        }
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(name).append(", studentID: "+studentId).append(", \nEnrolled Courses: \n").append(enrolledCourses);
-        return sb.toString();
+        enrolledCourses.remove(code);
     }
 }

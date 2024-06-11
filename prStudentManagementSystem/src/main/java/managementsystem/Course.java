@@ -2,14 +2,12 @@ package managementsystem;
 
 public class Course {
     private String courseName;
-    private int courseCode;
+    private String courseCode;
     private String description;
 
-    public Course(String courseName, int courseCode, String description){
-        if(courseName.isBlank()||description.isBlank()){
-            throw new IllegalArgumentException("Neither course name or description can be blank");
-        } else if (courseCode<0) {
-            throw new IllegalArgumentException("The course's code cannot be negative");
+    public Course(String courseName, String courseCode, String description){
+        if(courseName.isBlank()||description.isBlank()||courseCode.isBlank()){
+            throw new IllegalArgumentException("Neither course name, course code or description can be blank");
         }
         this.courseName=courseName;
         this.description=description;
@@ -22,7 +20,7 @@ public class Course {
         return description;
     }
 
-    public int getCourseCode() {
+    public String getCourseCode() {
         return courseCode;
     }
 
@@ -34,18 +32,11 @@ public class Course {
         this.description = description;
     }
 
-    public void setCourseCode(int courseCode) {
+    public void setCourseCode(String courseCode) {
         this.courseCode = courseCode;
     }
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(courseName+": (").append("Code: "+courseCode).append(" Description: "+description+")");
-        return "["+sb+"]";
     }
 }
