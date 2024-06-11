@@ -1,0 +1,67 @@
+
+Rental Store Management System
+
+Project Description:
+You are required to design and implement a rental store management system in Java. The system will manage a collection of movies and allow customers to rent and return movies. Additionally, the system will provide administrative functionality to add and remove movies, and generate statistics.
+
+Classes to Implement:
+
+1. Movie Class
+- Fields:
+  - title (String)
+  - director (String)
+  - releaseDate (LocalDate)
+  - genre (String)
+  - rating (Enum: PEGIRating with values PEGI_3, PEGI_7, PEGI_12, PEGI_16, PEGI_18)
+  - availability (boolean)
+
+- Methods:
+  - Constructor: Initialize all fields.
+  - Getters and Setters for all fields.
+  - toString(): Return a string representation of the movie.
+
+2. Customer Class
+- Fields:
+  - name (String)
+  - membershipId (int)
+  - rentedMovies (List<Movie>)
+
+- Methods:
+  - Constructor: Initialize name and membershipId.
+  - Getters and Setters for all fields.
+  - rentMovie(Movie movie): Add a movie to the rentedMovies list.
+  - returnMovie(Movie movie): Remove a movie from the rentedMovies list.
+  - getRentedMovies(): Return the list of rented movies.
+
+3. RentalStore Class
+- Fields:
+  - movieCollection (Map<String, Movie>)
+
+- Methods:
+  - Constructor: Initialize the movie collection.
+  - addMovie(Movie movie): Add a movie to the collection.
+  - removeMovie(String title): Remove a movie from the collection.
+  - displayAllMovies(): Display all movies in the collection.
+  - searchMovieByTitle(String title): Return a movie by its title.
+  - searchMoviesByDirector(String director): Return a list of movies by the same director.
+  - searchMoviesByGenre(String genre): Return a list of movies by genre.
+  - checkAvailability(String title): Return true if the movie is available, false otherwise.
+  - updateAvailability(String title, boolean update): Update the availability status of a movie.
+  - generateGenreStatistics(): Generate statistics of movies by genre.
+
+4. RentalApp Class (Main Class)
+- Contains the main method to run the application.
+- Instantiate objects of the Movie, RentalStore, and Customer classes.
+- Implement a console-based menu for customers to interact with the rental store system:
+  - Register as a new customer.
+  - Rent and return movies.
+  - View rented movies and due dates.
+  - Perform administrative tasks like adding/removing movies, viewing customer information, and generating rental store statistics.
+
+Instructions:
+1. Implement the Movie, Customer, RentalStore, and RentalApp classes as described above.
+2. Use appropriate data structures to manage collections of movies and customers.
+3. Ensure proper encapsulation and use of access modifiers.
+4. Implement exception handling where necessary.
+5. Write unit tests for the RentalStore class using JUnit and Mockito to verify the correctness of the methods.
+6. Document your code with comments and provide a README file explaining how to run the application.
