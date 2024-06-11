@@ -56,4 +56,11 @@ public class Student {
             throw new NumberFormatException("Course code "+code+" is not valid");
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(name).append(", studentID: "+studentId).append(", \nEnrolled Courses: \n").append(enrolledCourses);
+        return sb.toString();
+    }
 }
