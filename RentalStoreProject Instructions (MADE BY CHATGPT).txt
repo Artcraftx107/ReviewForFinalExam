@@ -1,4 +1,3 @@
-
 Rental Store Management System
 
 Project Description:
@@ -64,4 +63,3 @@ Instructions:
 3. Ensure proper encapsulation and use of access modifiers.
 4. Implement exception handling where necessary.
 5. Write unit tests for the RentalStore class using JUnit and Mockito to verify the correctness of the methods.
-6. Document your code with comments and provide a README file explaining how to run the application.
