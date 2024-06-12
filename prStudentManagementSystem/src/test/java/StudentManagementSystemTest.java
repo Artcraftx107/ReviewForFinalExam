@@ -2,12 +2,15 @@ import managementsystem.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 public class StudentManagementSystemTest {
     private StudentManagementSystem sms;
+    private static final String STUDENTS_FILE = "students_test.txt";
+    private static final String COURSES_FILE = "courses_test.txt";
 
     @BeforeEach
     public void setUp() {
@@ -105,25 +108,32 @@ public class StudentManagementSystemTest {
         Student student = new Student("Alice", "S001");
         student.enrollCourse("MATH101");
         sms.addStudent(student);
-        sms.saveStudentsToFile("students_test.txt");
+        sms.saveStudentsToFile(STUDENTS_FILE);
 
         StudentManagementSystem loadedSms = new StudentManagementSystem();
-        loadedSms.loadStudentsFromFile("students_test.txt");
+        loadedSms.loadStudentsFromFile(STUDENTS_FILE);
+        //Code to delete the used file for testing after loading from it
+        File auxFile = new File(STUDENTS_FILE);
+        auxFile.delete();
 
         Student found = loadedSms.searchStudent("S001");
         assertNotNull(found);
         assertEquals("Alice", found.getName());
         assertTrue(found.getEnrolledCourses().contains("MATH101"));
+
     }
 
     @Test
     public void testSaveAndLoadCourses() throws IOException {
         Course course = new Course("Math 101", "MATH101", "Introduction to Mathematics");
         sms.addCourse(course);
-        sms.saveCoursesToFile("courses_test.txt");
+        sms.saveCoursesToFile(COURSES_FILE);
 
         StudentManagementSystem loadedSms = new StudentManagementSystem();
-        loadedSms.loadCoursesFromFile("courses_test.txt");
+        loadedSms.loadCoursesFromFile(COURSES_FILE);
+        //Code to delete the used file for testing after loading from it
+        File auxFile = new File(COURSES_FILE);
+        auxFile.delete();
 
         Course found = loadedSms.searchCourse("MATH101");
         assertNotNull(found);

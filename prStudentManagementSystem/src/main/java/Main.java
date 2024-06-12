@@ -1,5 +1,6 @@
 import managementsystem.*;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Main {
@@ -32,6 +33,12 @@ public class Main {
         try {
             sms2.loadStudentsFromFile("students.txt");
             sms2.loadCoursesFromFile("courses.txt");
+            /* If you want the used files to be deleted after loading from them, uncomment this code :)
+            File studentsFile = new File("students.txt");
+            File coursesFile = new File("courses.txt");
+            studentsFile.delete();
+            coursesFile.delete();
+            */
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
