@@ -106,7 +106,7 @@ public class ConferenceManagementSystem {
         if(!speakers.containsKey(speakerID)){
             throw new NoSuchElementException("There is no speaker with the ID "+speakerID);
         }
-        sessions.remove(speakerID);
+        speakers.remove(speakerID);
     }
 
     public Speaker searchSpeaker(String speakerID){
