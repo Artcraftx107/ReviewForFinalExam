@@ -13,14 +13,14 @@ public class Session {
     private List<String> attendeeIDs;
     private Time scheduledTime;
 
-    public Session(String sessionId, String title, String description, Time scheduledTime){
+    public Session(String sessionId, String title, String description, String scheduledTime){
         if(sessionId.isBlank()||title.isBlank()||description.isBlank()){
             throw new IllegalArgumentException("Neither the session's id, name or description can be blank");
         }
         this.sessionId=sessionId;
         this.title=title;
         this.description=description;
-        this.scheduledTime=scheduledTime;
+        setScheduledTime(scheduledTime);
         this.attendeeIDs=new ArrayList<>();
     }
 
