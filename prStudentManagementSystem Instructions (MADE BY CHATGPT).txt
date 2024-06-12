@@ -1,0 +1,73 @@
+Student Management System Project Instructions
+
+Overview
+You are tasked with creating a Student Management System to handle students, courses, and enrollments. The system should support adding, updating, deleting, and searching for students and courses, as well as enrolling and withdrawing students from courses. Additionally, the system should be able to save and load data to and from files.
+
+Classes and Methods; 
+
+1. Class: Student
+Attributes:
+
+name (String): The name of the student.
+studentID (String): The unique ID of the student.
+enrolledCourses (List<String>): A list of course codes the student is enrolled in.
+Methods:
+
+Student(String name, String studentID): Constructor to initialize a student with a name and ID.
+getName(): Returns the name of the student.
+setName(String name): Sets the name of the student.
+getStudentID(): Returns the student ID.
+getEnrolledCourses(): Returns the list of enrolled courses.
+enrollCourse(String courseCode): Adds a course code to the list of enrolled courses.
+withdrawCourse(String courseCode): Removes a course code from the list of enrolled courses.
+
+2. Class: Course
+Attributes:
+
+courseName (String): The name of the course.
+courseCode (String): The unique code of the course.
+description (String): A description of the course.
+Methods:
+
+Course(String courseName, String courseCode, String description): Constructor to initialize a course with a name, code, and description.
+getCourseName(): Returns the name of the course.
+setCourseName(String courseName): Sets the name of the course.
+getCourseCode(): Returns the course code.
+getDescription(): Returns the description of the course.
+setDescription(String description): Sets the description of the course.
+
+3. Class: StudentManagementSystem
+Attributes:
+
+students (Map<String, Student>): A map of student IDs to Student objects.
+courses (Map<String, Course>): A map of course codes to Course objects.
+Methods:
+
+StudentManagementSystem(): Constructor to initialize the student management system.
+addStudent(Student student): Adds a student to the system.
+updateStudent(Student student): Updates a student's information in the system.
+deleteStudent(String studentID): Deletes a student from the system by student ID.
+searchStudent(String studentID): Searches for a student by student ID and returns the student.
+addCourse(Course course): Adds a course to the system.
+updateCourse(Course course): Updates a course's information in the system.
+deleteCourse(String courseCode): Deletes a course from the system by course code.
+searchCourse(String courseCode): Searches for a course by course code and returns the course.
+enrollStudentInCourse(String studentID, String courseCode): Enrolls a student in a course using student ID and course code.
+withdrawStudentFromCourse(String studentID, String courseCode): Withdraws a student from a course using student ID and course code.
+saveStudentsToFile(String filename): Saves the list of students and their enrolled courses to a file.
+loadStudentsFromFile(String filename): Loads the list of students and their enrolled courses from a file.
+saveCoursesToFile(String filename): Saves the list of courses to a file.
+loadCoursesFromFile(String filename): Loads the list of courses from a file.
+
+Additional Requirements
+File I/O: Ensure proper handling of file operations, including error handling for I/O exceptions.
+Encapsulation: Use getter and setter methods to access private attributes.
+Data Integrity: Maintain the integrity of student enrollments and course information during add, update, and delete operations.
+
+Testing
+Create JUnit tests to verify the functionality of the Student Management System:
+
+Test adding, updating, deleting, and searching for students and courses.
+Test enrolling and withdrawing students from courses.
+Test saving and loading students and courses to and from files.
+Ensure cleanup of test files after each test execution.
