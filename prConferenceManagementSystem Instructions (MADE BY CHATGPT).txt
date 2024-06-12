@@ -1,0 +1,137 @@
+Conference Management System Project Instructions
+==========================================
+
+Overview
+--------
+You are tasked with creating a Conference Management System to handle conferences, sessions, speakers, and attendees. The system should support adding, updating, deleting, and searching for conferences, sessions, speakers, and attendees, as well as scheduling sessions, assigning speakers to sessions, and registering attendees for sessions. The system should also be able to save and load data to and from files.
+
+Classes and Methods
+-------------------
+1. Class: Conference
+   Attributes:
+   - conferenceID (String): The unique ID of the conference.
+   - name (String): The name of the conference.
+   - description (String): A description of the conference.
+   - sessions (List<String>): A list of session IDs for the sessions in the conference.
+
+   Methods:
+   - Conference(String conferenceID, String name, String description): Constructor to initialize a conference with an ID, name, and description.
+   - getConferenceID(): Returns the conference ID.
+   - getName(): Returns the name of the conference.
+   - setName(String name): Sets the name of the conference.
+   - getDescription(): Returns the description of the conference.
+   - setDescription(String description): Sets the description of the conference.
+   - getSessions(): Returns the list of session IDs.
+   - addSession(String sessionID): Adds a session ID to the list of sessions.
+   - removeSession(String sessionID): Removes a session ID from the list of sessions.
+
+2. Class: Session
+   Attributes:
+   - sessionID (String): The unique ID of the session.
+   - title (String): The title of the session.
+   - description (String): A description of the session.
+   - speakerID (String): The ID of the speaker assigned to the session.
+   - attendeeIDs (List<String>): A list of attendee IDs registered for the session.
+   - scheduledTime (String): The scheduled time of the session.
+
+   Methods:
+   - Session(String sessionID, String title, String description, String scheduledTime): Constructor to initialize a session with an ID, title, description, and scheduled time.
+   - getSessionID(): Returns the session ID.
+   - getTitle(): Returns the title of the session.
+   - setTitle(String title): Sets the title of the session.
+   - getDescription(): Returns the description of the session.
+   - setDescription(String description): Sets the description of the session.
+   - getSpeakerID(): Returns the speaker ID.
+   - setSpeakerID(String speakerID): Sets the speaker ID.
+   - getAttendeeIDs(): Returns the list of attendee IDs.
+   - addAttendee(String attendeeID): Adds an attendee ID to the list of attendees.
+   - removeAttendee(String attendeeID): Removes an attendee ID from the list of attendees.
+   - getScheduledTime(): Returns the scheduled time of the session.
+   - setScheduledTime(String scheduledTime): Sets the scheduled time of the session.
+
+3. Class: Speaker
+   Attributes:
+   - speakerID (String): The unique ID of the speaker.
+   - name (String): The name of the speaker.
+   - bio (String): A biography of the speaker.
+   - sessionIDs (List<String>): A list of session IDs the speaker is assigned to.
+
+   Methods:
+   - Speaker(String speakerID, String name, String bio): Constructor to initialize a speaker with an ID, name, and bio.
+   - getSpeakerID(): Returns the speaker ID.
+   - getName(): Returns the name of the speaker.
+   - setName(String name): Sets the name of the speaker.
+   - getBio(): Returns the biography of the speaker.
+   - setBio(String bio): Sets the biography of the speaker.
+   - getSessionIDs(): Returns the list of session IDs.
+   - addSession(String sessionID): Adds a session ID to the list of sessions.
+   - removeSession(String sessionID): Removes a session ID from the list of sessions.
+
+4. Class: Attendee
+   Attributes:
+   - attendeeID (String): The unique ID of the attendee.
+   - name (String): The name of the attendee.
+   - email (String): The email of the attendee.
+   - sessionIDs (List<String>): A list of session IDs the attendee is registered for.
+
+   Methods:
+   - Attendee(String attendeeID, String name, String email): Constructor to initialize an attendee with an ID, name, and email.
+   - getAttendeeID(): Returns the attendee ID.
+   - getName(): Returns the name of the attendee.
+   - setName(String name): Sets the name of the attendee.
+   - getEmail(): Returns the email of the attendee.
+   - setEmail(String email): Sets the email of the attendee.
+   - getSessionIDs(): Returns the list of session IDs.
+   - addSession(String sessionID): Adds a session ID to the list of sessions.
+   - removeSession(String sessionID): Removes a session ID from the list of sessions.
+
+5. Class: ConferenceManagementSystem
+   Attributes:
+   - conferences (Map<String, Conference>): A map of conference IDs to Conference objects.
+   - sessions (Map<String, Session>): A map of session IDs to Session objects.
+   - speakers (Map<String, Speaker>): A map of speaker IDs to Speaker objects.
+   - attendees (Map<String, Attendee>): A map of attendee IDs to Attendee objects.
+
+   Methods:
+   - ConferenceManagementSystem(): Constructor to initialize the conference management system.
+   - addConference(Conference conference): Adds a conference to the system.
+   - updateConference(Conference conference): Updates a conference's information in the system.
+   - deleteConference(String conferenceID): Deletes a conference from the system by conference ID.
+   - searchConference(String conferenceID): Searches for a conference by conference ID and returns the conference.
+   - addSession(Session session): Adds a session to the system.
+   - updateSession(Session session): Updates a session's information in the system.
+   - deleteSession(String sessionID): Deletes a session from the system by session ID.
+   - searchSession(String sessionID): Searches for a session by session ID and returns the session.
+   - addSpeaker(Speaker speaker): Adds a speaker to the system.
+   - updateSpeaker(Speaker speaker): Updates a speaker's information in the system.
+   - deleteSpeaker(String speakerID): Deletes a speaker from the system by speaker ID.
+   - searchSpeaker(String speakerID): Searches for a speaker by speaker ID and returns the speaker.
+   - addAttendee(Attendee attendee): Adds an attendee to the system.
+   - updateAttendee(Attendee attendee): Updates an attendee's information in the system.
+   - deleteAttendee(String attendeeID): Deletes an attendee from the system by attendee ID.
+   - searchAttendee(String attendeeID): Searches for an attendee by attendee ID and returns the attendee.
+   - scheduleSession(String sessionID, String conferenceID): Schedules a session for a conference using session ID and conference ID.
+   - assignSpeakerToSession(String speakerID, String sessionID): Assigns a speaker to a session using speaker ID and session ID.
+   - registerAttendeeForSession(String attendeeID, String sessionID): Registers an attendee for a session using attendee ID and session ID.
+   - saveConferencesToFile(String filename): Saves the list of conferences to a file.
+   - loadConferencesFromFile(String filename): Loads the list of conferences from a file.
+   - saveSessionsToFile(String filename): Saves the list of sessions to a file.
+   - loadSessionsFromFile(String filename): Loads the list of sessions from a file.
+   - saveSpeakersToFile(String filename): Saves the list of speakers to a file.
+   - loadSpeakersFromFile(String filename): Loads the list of speakers from a file.
+   - saveAttendeesToFile(String filename): Saves the list of attendees to a file.
+   - loadAttendeesFromFile(String filename): Loads the list of attendees from a file.
+
+Additional Requirements
+-----------------------
+- File I/O: Ensure proper handling of file operations, including error handling for I/O exceptions.
+- Encapsulation: Use getter and setter methods to access private attributes.
+- Data Integrity: Maintain the integrity of sessions, speakers, and attendee registrations during add, update, and delete operations.
+
+Testing
+-------
+Create JUnit tests to verify the functionality of the Conference Management System:
+- Test adding, updating, deleting, and searching for conferences, sessions, speakers, and attendees.
+- Test scheduling sessions, assigning speakers to sessions, and registering attendees for sessions.
+- Test saving and loading conferences, sessions, speakers, and attendees to and from files.
+- Ensure cleanup of test files after each test execution.
