@@ -1,4 +1,4 @@
-Ejercicio 2: Gestión de Inventario (Proyecto inv532)
+Ejercicio parecido a pa1p53: Gestión de Inventario (Proyecto inv532)
 
 Se va a desarrollar una aplicación para gestionar un inventario de productos de una tienda. Debes diseñar las clases Producto, Inventario y GestorInventario dentro del paquete inventario.
 
