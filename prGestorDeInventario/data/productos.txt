@@ -1,0 +1,3 @@
+101,Lápiz,0.5
+102,Cuaderno,1.5
+103,Calculadora,10.25
