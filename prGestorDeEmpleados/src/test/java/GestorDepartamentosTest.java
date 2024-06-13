@@ -72,11 +72,11 @@ public class GestorDepartamentosTest {
         gestor.agregarEmpleados("Finance", new Empleado(4, "David", 6000));
 
         // Guardar en fichero
-        gestor.saveDepartamentosYEmpleadosAFichero("src/test/resources/departamentos_test.txt");
+        gestor.saveDepartamentosYEmpleadosAFichero("departamentos_test.txt");
 
         // Crear un nuevo gestor y cargar desde fichero
         GestorDepartamentos gestorCargado = new GestorDepartamentos();
-        gestorCargado.loadDepartamentosYEmpleadosDesdeFichero("src/test/resources/departamentos_test.txt");
+        gestorCargado.loadDepartamentosYEmpleadosDesdeFichero("departamentos_test.txt");
 
         // Comprobar que los datos se cargaron correctamente
         List<Empleado> empleadosIT = gestorCargado.listarEmpleadosPorDepartamento("IT");
@@ -93,7 +93,7 @@ public class GestorDepartamentosTest {
         assertEquals("David", empleadosFinance.get(0).getNombre());
 
         // Eliminar el archivo de prueba
-        File file = new File("src/test/resources/departamentos_test.txt");
+        File file = new File("departamentos_test.txt");
         if (file.exists()) {
             assertTrue(file.delete());
         }
