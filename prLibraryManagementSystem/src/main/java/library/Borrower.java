@@ -1,8 +1,8 @@
 package library;
 
 public class Borrower {
-    private String borrowerID;
-    private String name;
+    private final String borrowerID;
+    private final String name;
 
     public Borrower(String borrowerID, String name){
         if(borrowerID.isBlank()||name.isBlank()){

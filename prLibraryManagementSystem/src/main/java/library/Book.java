@@ -16,9 +16,7 @@ public record Book(String bookID, String title, String authorID, List<String> bo
     }
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(bookID).append(",").append(title).append(",")
-                .append(authorID).append(",").append(borrowers);
-        return sb.toString();
+        return bookID + "," + title + "," +
+                authorID + "," + borrowers;
     }
 }

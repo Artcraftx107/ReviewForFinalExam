@@ -1,14 +1,13 @@
 import library.*;
 
-import javax.swing.text.html.parser.Entity;
 import java.io.*;
 import java.util.*;
 
 public class LibraryManagementSystem {
     private static final String LINE_ERROR = "The data specified in the current line is incorrect or has a wrong format";
-    private Map<String, Book> books;
-    private Map<String, Borrower> borrowers;
-    private Map<String, Author> authors;
+    private final Map<String, Book> books;
+    private final Map<String, Borrower> borrowers;
+    private final Map<String, Author> authors;
 
     //Initializer
     public LibraryManagementSystem(){

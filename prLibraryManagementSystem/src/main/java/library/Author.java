@@ -1,8 +1,8 @@
 package library;
 
 public class Author {
-    private String authorID;
-    private String name;
+    private final String authorID;
+    private final String name;
 
     public Author(String authorID, String name){
         if(authorID.isBlank()||name.isBlank()){
