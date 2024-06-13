@@ -1,0 +1,79 @@
+==============================================================
+           Mock Auction System Project Instructions
+==============================================================
+
+DISCLAIMER:
+This is a mock auction system project created for educational purposes only.
+It does not implement real security measures and should not be used
+as-is in a production environment. Passwords and other sensitive information
+are handled in an insecure manner for demonstration purposes.
+
+==============================================================
+Instructions:
+==============================================================
+
+1. Overview:
+   This project simulates a basic auction system where users can register,
+   login, add items for auction, place bids, and manage auctions.
+
+2. Classes and Required Methods:
+   
+   AuctionSystem:
+   - registerUser(String username, String password, String role)
+   - login(String username, String password)
+   - addItem(String itemName, String description, double startingPrice)
+   - startAuction(Item item)
+   - placeBid(User user, Item item, double bidAmount)
+   - closeAuction(Item item)
+   - saveUsersToFile(String filename)
+   - loadUsersFromFile(String filename)
+   - saveItemsToFile(String filename)
+   - loadItemsFromFile(String filename)
+
+   User:
+   - Constructor: User(String username, String password, String role)
+   - Getter: getUsername()
+   - Setter: setUsername(String username)
+   - Setter: setPassword(String password)
+   - Setter: setRole(String role)
+   - Override: toString()
+
+   Item:
+   - Constructor: Item(String itemName, String description, double startingPrice)
+   - Getter: getItemName()
+   - Setter: setItemName(String itemName)
+   - Getter: getDescription()
+   - Setter: setDescription(String description)
+   - Getter: getCurrentHighestBid()
+   - Setter: setCurrentHighestBid(double currentHighestBid)
+   - Getter: getStartingPrice()
+   - Setter: setStartingPrice(double startingPrice)
+   - Getter: isAuctionStatus()
+   - Setter: setAuctionStatus(boolean auctionStatus)
+   - Method: placeBid(double bidAmount)
+   - Override: toString()
+
+3. Functionality:
+   - Upon launching the application, users are prompted to register, login, or exit.
+   - After logging in, users (both admin and regular) can perform actions based on their roles.
+   - Admin users have additional options for managing items and auctions.
+   - Data (users and items) is loaded from and saved to text files automatically.
+
+4. Testing:
+   - Use JUnit tests to verify functionality of methods in AuctionSystem, User, and Item classes.
+   - Include tests for user registration, login, item management, bid placement, and file I/O.
+
+5. Security Notice:
+   - This project does not implement secure practices for handling passwords or other sensitive data.
+   - Passwords are stored in plain text for demonstration purposes and should not be considered secure.
+
+6. Conclusion:
+   - This project serves as an educational tool to understand basic concepts of Java programming,
+     object-oriented design, file handling, and simulated system interactions.
+
+7. Disclaimer:
+   - This project is not suitable for production use and is intended solely for educational purposes.
+
+==============================================================
+End of Project Instructions
+==============================================================
