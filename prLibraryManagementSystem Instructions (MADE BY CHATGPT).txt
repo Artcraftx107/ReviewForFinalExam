@@ -1,0 +1,92 @@
+Project: Library Management System
+==============================
+
+Requirements:
+-------------
+- Book Management: Add, update, delete, and search for books.
+- Author Management: Add, update, delete, and search for authors.
+- Borrower Management: Add, update, delete, and search for borrowers.
+- Borrowing and Returning Books: Allow borrowers to borrow and return books.
+- File Operations: Save and load books, authors, and borrowers from files.
+
+Classes and Records:
+---------------------
+Book: A record to store book information.
+Author: A class to store author information.
+Borrower: A class to store borrower information.
+LibraryManagementSystem: The main class to manage the library operations.
+
+Detailed Instructions:
+-------------------------
+Book Record:
+-----------
+Fields:
+- String bookId
+- String title
+- String authorId
+- List<String> borrowers
+
+Methods:
+- toString(): Return a string representation of the book in CSV format.
+
+Author Class:
+-------------
+Fields:
+- String authorId
+- String name
+
+Methods:
+- Author(String authorId, String name): Constructor to initialize fields.
+- getAuthorId(): Return the author's ID.
+- getName(): Return the author's name.
+- toString(): Return a string representation of the author in CSV format.
+
+Borrower Class:
+---------------
+Fields:
+- String borrowerId
+- String name
+
+Methods:
+- Borrower(String borrowerId, String name): Constructor to initialize fields.
+- getBorrowerId(): Return the borrower's ID.
+- getName(): Return the borrower's name.
+- toString(): Return a string representation of the borrower in CSV format.
+
+LibraryManagementSystem Class:
+-------------------------------
+Fields:
+- Map<String, Book> books
+- Map<String, Author> authors
+- Map<String, Borrower> borrowers
+
+Methods:
+Book Management:
+- void addBook(Book book): Add a new book to the collection.
+- void updateBook(Book book): Update an existing book in the collection.
+- void deleteBook(String bookId): Delete a book from the collection by its ID.
+- Book searchBook(String bookId): Search for a book by its ID and return it.
+
+Author Management:
+- void addAuthor(Author author): Add a new author to the collection.
+- void updateAuthor(Author author): Update an existing author in the collection.
+- void deleteAuthor(String authorId): Delete an author from the collection by their ID.
+- Author searchAuthor(String authorId): Search for an author by their ID and return them.
+
+Borrower Management:
+- void addBorrower(Borrower borrower): Add a new borrower to the collection.
+- void updateBorrower(Borrower borrower): Update an existing borrower in the collection.
+- void deleteBorrower(String borrowerId): Delete a borrower from the collection by their ID.
+- Borrower searchBorrower(String borrowerId): Search for a borrower by their ID and return them.
+
+Borrowing and Returning Books:
+- void borrowBook(String bookId, String borrowerId): Allow a borrower to borrow a book.
+- void returnBook(String bookId, String borrowerId): Allow a borrower to return a borrowed book.
+
+File Operations:
+- void saveBooksToFile(String filename) throws IOException: Save all books to a file.
+- void loadBooksFromFile(String filename) throws IOException: Load books from a file.
+- void saveAuthorsToFile(String filename) throws IOException: Save all authors to a file.
+- void loadAuthorsFromFile(String filename) throws IOException: Load authors from a file.
+- void saveBorrowersToFile(String filename) throws IOException: Save all borrowers to a file.
+- void loadBorrowersFromFile(String filename) throws IOException: Load borrowers from a file.
