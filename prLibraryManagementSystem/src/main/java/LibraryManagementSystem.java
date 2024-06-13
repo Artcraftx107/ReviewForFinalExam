@@ -155,6 +155,9 @@ public class LibraryManagementSystem {
         }catch (IOException e){
             throw new FileNotFoundException("The file "+filename+" was not found");
         }
+        //Code so the file used to load from is deleted after loading
+        File file = new File(filename);
+        file.delete();
     }
 
     @FunctionalInterface
