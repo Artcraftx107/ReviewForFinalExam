@@ -9,7 +9,12 @@ public class Main {
     public static void main(String[] args) {
         AuctionSystem auctionSystem = new AuctionSystem();
         Scanner scanner = new Scanner(System.in);
-
+        System.out.println("\n* DISCLAIMER: " +
+                "\n* This is a mock project created for educational purposes only. " +
+                "\n* It does not implement real security measures and should not be used " +
+                "\n* as-is in a production environment. Passwords and other sensitive information " +
+                "\n* are handled in an insecure manner for demonstration purposes."
+        );
         // Load existing data
         try {
             auctionSystem.loadUsersFromFile("usersData.txt");

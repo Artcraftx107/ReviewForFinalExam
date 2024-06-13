@@ -1,3 +1,10 @@
+/*
+ * DISCLAIMER:
+ * This is a mock project created for educational purposes only.
+ * It does not implement real security measures and should not be used
+ * as-is in a production environment. Passwords and other sensitive information
+ * are handled in an insecure manner for demonstration purposes.
+ */
 package auctionsys;
 
 import java.io.*;
