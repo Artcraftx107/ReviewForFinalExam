@@ -1,0 +1,17 @@
+IT:1,Alice,5000
+IT:2,Bob,6000
+IT:3,Charlie,5500
+IT:4,Dave,5300
+HR:5,Eve,4500
+HR:6,Frank,4800
+HR:7,Grace,4700
+Finance:8,Hank,6200
+Finance:9,Ivy,6100
+Finance:10,Jack,6000
+Marketing:11,Kate,4900
+Marketing:12,Liam,5100
+Marketing:13,Mona,5000
+Sales:14,Nina,5200
+Sales:15,Oscar,5300
+Sales:16,Paul,5400
+Sales:17,Quinn,5500

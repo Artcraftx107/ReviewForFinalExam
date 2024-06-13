@@ -1,0 +1,17 @@
+Finance:8,Hank,6200.0
+Finance:9,Ivy,6100.0
+Finance:10,Jack,6000.0
+HR:5,Eve,4500.0
+HR:6,Frank,4800.0
+HR:7,Grace,4700.0
+IT:1,Alice,5000.0
+IT:2,Bob,6000.0
+IT:3,Charlie,5500.0
+IT:4,Dave,5300.0
+Marketing:11,Kate,4900.0
+Marketing:12,Liam,5100.0
+Marketing:13,Mona,5000.0
+Sales:14,Nina,5200.0
+Sales:15,Oscar,5300.0
+Sales:16,Paul,5400.0
+Sales:17,Quinn,5500.0
