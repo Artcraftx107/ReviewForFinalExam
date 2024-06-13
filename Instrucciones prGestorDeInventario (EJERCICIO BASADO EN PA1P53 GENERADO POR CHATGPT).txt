@@ -1,0 +1,58 @@
+Ejercicio 2: Gestión de Inventario (Proyecto inv532)
+
+Se va a desarrollar una aplicación para gestionar un inventario de productos de una tienda. Debes diseñar las clases Producto, Inventario y GestorInventario dentro del paquete inventario.
+
+Clase Producto
+La clase Producto representa un artículo en el inventario con la siguiente información:
+
+int codigo: código único del producto.
+String nombre: nombre del producto.
+double precio: precio unitario del producto.
+Implementa los siguientes métodos:
+a) Un constructor que inicializa un producto con código, nombre y precio.
+b) Métodos getter para cada atributo.
+
+Clase Inventario
+La clase Inventario gestiona una colección de productos mediante un mapa de productos, donde la clave es el código del producto (Map<Integer, Producto>).
+
+Implementa los siguientes métodos:
+a) Un constructor por defecto que inicializa la estructura.
+b) public void agregarProducto(Producto producto): agrega un producto al inventario.
+c) public Producto buscarProducto(int codigo): busca y devuelve el producto correspondiente al código especificado, o null si no existe.
+d) public List<Producto> listarProductos(): devuelve una lista con todos los productos del inventario.
+
+Clase GestorInventario
+La clase GestorInventario proporciona métodos para gestionar el inventario de productos:
+a) Un constructor que inicializa el inventario.
+b) public void cargarInventario(String archivo) throws FileNotFoundException: lee y carga los productos desde un archivo de texto con el formato:
+
+codigo,nombre,precio
+Cada línea representa un producto. Si una línea no es válida, se ignora y se continúa con la siguiente.
+c) public void mostrarInventario(): muestra en consola todos los productos del inventario, uno por línea, en el formato:
+
+codigo - nombre - precio
+d) public double valorInventario(): calcula y devuelve el valor total del inventario, que es la suma de todos los precios de los productos.
+
+Clase Principal
+La clase Principal se ubicará en el paquete por defecto y tendrá el siguiente código:
+
+import inventario.GestorInventario;
+import java.io.IOException;
+
+public class Principal {
+    public static void main(String[] args) throws IOException {
+        GestorInventario gestor = new GestorInventario();
+        gestor.cargarInventario("data/productos.txt");
+        gestor.mostrarInventario();
+        
+        System.out.println("\nValor total del inventario: $" + gestor.valorInventario());
+    }
+}
+
+El archivo productos.txt contendrá datos de productos como sigue:
+
+101,Lápiz,0.5
+102,Cuaderno,1.5
+103,Calculadora,10.25
+
+Cada línea representa un producto con su código, nombre y precio.
