@@ -1,0 +1,114 @@
+# Ejercicio Complejo de Gestión de Empleados y Departamentos
+
+## Objetivo
+Crear un sistema de gestión de empleados y departamentos en una empresa, donde cada departamento tiene varios empleados. El sistema debe permitir agregar empleados a departamentos, buscar empleados por ID, listar empleados por departamento, calcular el salario total por departamento y guardar/cargar la información desde/hasta un archivo de texto.
+
+## Clases
+
+### Clase `Empleado`
+#### Variables
+- `int id`: Identificador único del empleado.
+- `String nombre`: Nombre del empleado.
+- `double salarioBase`: Salario base del empleado.
+
+#### Métodos
+- Constructor `Empleado(int id, String nombre, double salarioBase)`
+- Getters `getId()`, `getNombre()`, `getSalarioBase()`
+- Método `toString()`: Devuelve una representación en cadena del empleado.
+
+### Clase `Departamento`
+#### Variables
+- `String nombre`: Nombre del departamento.
+- `Map<Integer, Empleado> empleados`: Mapa de empleados con el ID como clave.
+
+#### Métodos
+- Constructor `Departamento(String nombre)`
+- Método `anyadeEmpleado(Empleado empleado)`: Agrega un empleado al departamento.
+- Método `buscarEmpleado(int id)`: Busca un empleado por ID en el departamento.
+- Método `getEmpleados()`: Devuelve una lista de todos los empleados en el departamento.
+- Método `toString()`: Devuelve una representación en cadena del departamento y sus empleados.
+
+### Clase `GestorDepartamentos`
+#### Variables
+- `Map<String, Departamento> departamentos`: Mapa de departamentos con el nombre como clave.
+
+#### Métodos
+- Constructor `GestorDepartamentos()`
+- Método `agregarEmpleados(String nombreDepartamento, Empleado empleado)`: Agrega un empleado a un departamento.
+- Método `buscarEmpleado(int id)`: Busca un empleado por ID en todos los departamentos.
+- Método `listarEmpleadosPorDepartamento(String nombreDepartamento)`: Lista empleados de un departamento específico.
+- Método `calcularSalarioTotalPorDepartamento(String nombreDepartamento)`: Calcula el salario total de un departamento.
+- Método `saveDepartamentosYEmpleadosAFichero(String fichero)`: Guarda la información de departamentos y empleados en un archivo.
+- Método `loadDepartamentosYEmpleadosDesdeFichero(String fichero)`: Carga la información de departamentos y empleados desde un archivo.
+
+## Clase `Main`
+#### Métodos
+- Método `main(String[] args)`: Método principal para ejecutar las pruebas del sistema.
+
+## Archivo de Prueba
+El archivo de prueba `departamentos_test.txt` debe contener información sobre los departamentos y sus empleados en el siguiente formato:
+
+IT:1,Alice,5000
+IT:2,Bob,6000
+IT:3,Charlie,5500
+IT:4,Dave,5300
+HR:5,Eve,4500
+HR:6,Frank,4800
+HR:7,Grace,4700
+Finance:8,Hank,6200
+Finance:9,Ivy,6100
+Finance:10,Jack,6000
+Marketing:11,Kate,4900
+Marketing:12,Liam,5100
+Marketing:13,Mona,5000
+Sales:14,Nina,5200
+Sales:15,Oscar,5300
+Sales:16,Paul,5400
+Sales:17,Quinn,5500
+
+
+## Instrucciones Adicionales
+- Cada clase debe estar en su propio archivo.
+- La clase `Main` debe incluir código para probar todas las funcionalidades, incluyendo agregar empleados, buscar empleados, listar empleados por departamento, calcular el salario total por departamento y guardar/cargar información de/para un archivo.
+- Asegúrate de manejar las excepciones apropiadamente y proporcionar mensajes de error claros.
+
+## Ejemplo de Uso
+El archivo `Main.java` podría contener código como:
+
+```java
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) {
+        GestorDepartamentos gestor = new GestorDepartamentos();
+        
+        // Cargar datos desde el archivo
+        try {
+            gestor.loadDepartamentosYEmpleadosDesdeFichero("departamentos_test.txt");
+        } catch (IOException e) {
+            System.err.println("Error al cargar el archivo: " + e.getMessage());
+        }
+
+        // Mostrar departamentos y empleados
+        gestor.mostrarDepartamentosYEmpleados();
+        
+        // Buscar empleado
+        try {
+            Empleado empleado = gestor.buscarEmpleado(1);
+            System.out.println("Empleado encontrado: " + empleado);
+        } catch (NoSuchElementException e) {
+            System.err.println(e.getMessage());
+        }
+
+        // Calcular salario total por departamento
+        double salarioTotal = gestor.calcularSalarioTotalPorDepartamento("IT");
+        System.out.println("Salario total del departamento IT: " + salarioTotal);
+
+        // Guardar datos en el archivo
+        try {
+            gestor.saveDepartamentosYEmpleadosAFichero("departamentos_guardado.txt");
+        } catch (IOException e) {
+            System.err.println("Error al guardar el archivo: " + e.getMessage());
+        }
+    }
+}
