@@ -57,4 +57,11 @@ public class Conference {
     public void removeSession(String sessionId){
         sessions.remove(sessionId);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(conferenceId).append(",").append(name).append(",").append(description);
+        return sb.toString();
+    }
 }

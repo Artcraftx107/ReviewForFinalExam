@@ -92,4 +92,11 @@ public class Session {
         }
         attendeeIDs.remove(attendeeID);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(sessionId).append(",").append(title).append(",").append(description).append(",").append(getScheduledTime());
+        return sb.toString();
+    }
 }

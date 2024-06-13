@@ -57,4 +57,11 @@ public class Attendee {
         }
         sessionIDs.remove(sessionId);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(attendeeId).append(",").append(name).append(",").append(email);
+        return sb.toString();
+    }
 }

@@ -59,4 +59,11 @@ public class Speaker {
         }
         sessionIds.remove(sessionId);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(speakerId).append(",").append(name).append(",").append(bio);
+        return sb.toString();
+    }
 }

@@ -162,7 +162,7 @@ public class ConferenceManagementSystem {
         speaker.addSession(sessionID);
     }
 
-    public void registerAttendeeForSession(String sessionID, String attendeeID){
+    public void registerAttendeeForSession(String attendeeID, String sessionID){
         Session session = searchSession(sessionID);
         Attendee attendee = searchAttendee(attendeeID);
         session.addAttendee(attendee.getAttendeeId());
